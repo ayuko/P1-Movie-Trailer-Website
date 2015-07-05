@@ -15,144 +15,145 @@ main_page_head = '''
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
-		/*******************************************************
-		Additional CSS3 to show plot on hover
-		*******************************************************/
+		/***************************************************************************
+		Additional CSS3 to show plot on hover adapted from 
+		https://css-tricks.com/slide-in-image-captions/ 
+		and 
+		http://geekgirllife.com/animate-text-over-images-on-hover-without-javascript/
+		*****************************************************************************/
 		
-        figure { 
-        display: block; 
-        position: relative; 
-        overflow: hidden; 
-        margin: 0 20px 20px 0;
+        figure {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            margin: 0 20px 20px 0;
         }
-        figcaption { 
-        position: absolute; 
-        background: rgba(0,0,0,0.75); 
-        color: white; 
-        padding: 10px 20px; 
-        opacity: 0;
-        -webkit-transition: all 0.6s ease;
-        -moz-transition:    all 0.6s ease;
-        -o-transition:      all 0.6s ease;
+        figcaption {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 10px 20px;
+            opacity: 0;
+            -webkit-transition: all 0.6s ease;
+            -moz-transition: all 0.6s ease;
+            -o-transition: all 0.6s ease;
         }
         figure:hover figcaption {
-        opacity: 1;
+            opacity: 1;
         }
-        figure:before { 
-        content: "?"; 
-        position: absolute; 
-        font-weight: 800; 
-        background: rgba(255,255,255,0.75); 
-        text-shadow: 0 0 5px white;
-        color: black;
-        width: 24px;
-        height: 24px;
-        -webkit-border-radius: 12px;
-        -moz-border-radius:    12px;
-        border-radius:         12px;
-        text-align: center;
-        font-size: 14px;
-        line-height: 24px;
-        -moz-transition: all 0.6s ease;
-        opacity: 0.75;	
+        figure:before {
+            content: "?";
+            position: absolute;
+            font-weight: 800;
+            background: rgba(255, 255, 255, 0.75);
+            text-shadow: 0 0 5px white;
+            color: black;
+            width: 24px;
+            height: 24px;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 24px;
+            -moz-transition: all 0.6s ease;
+            opacity: 0.75;
         }
         figure:hover:before {
-        opacity: 0;
+            opacity: 0;
         }
-		.image-grid img {
-
-		-webkit-transition: all 300ms;
-		-moz-transition: all 300ms;
-		transition: all 300ms;
-		max-width: 100%;
-		}
- 
-		.image-grid img:hover {
-		-webkit-transform: scale(1.4);
-		-moz-transform: scale(1.4);
-		transform: scale(1.4);
-		}
-		
-        .image-grid:before { 
-		bottom: 10px; 
-		left: 10px; 
-		}
-        .image-grid figcaption { 
-		left: 0; 
-		bottom: -30%;
-		}
-        .image-grid:hover figcaption { 
-		bottom: 0; 
-		}
+        .image-grid img {
+            -webkit-transition: all 300ms;
+            -moz-transition: all 300ms;
+            transition: all 300ms;
+            max-width: 100%;
+        }
+        .image-grid img:hover {
+            -webkit-transform: scale(1.4);
+            -moz-transform: scale(1.4);
+            transform: scale(1.4);
+        }
+        .image-grid:before {
+            bottom: 10px;
+            left: 10px;
+        }
+        .image-grid figcaption {
+            left: 0;
+            bottom: -30%;
+        }
+        .image-grid:hover figcaption {
+            bottom: 0;
+        }
         body {
-        font-family: "Roboto", sans-serif;
-        padding-top: 80px;
+            font-family: "Roboto", sans-serif;
+            padding-top: 80px;
         }
-        h2, .h2 {
-        font-family: "Raleway", sans-serif;
-        font-size: 20px;
+        h2,
+        .h2 {
+            font-family: "Raleway", sans-serif;
+            font-size: 20px;
         }
         p {
-        font-family: "Roboto", sans-serif;
-        margin: 20 0 10px;
+            font-family: "Roboto", sans-serif;
+            margin: 20 0 10px;
         }
         img {
-        padding: 20px;
+            padding: 20px;
         }
         #trailer .modal-dialog {
-        margin-top: 200px;
-        width: 640px;
-        height: 480px;
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
         }
         .hanging-close {
-        position: absolute;
-        top: -12px;
-        right: -12px;
-        z-index: 9001;
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
         }
         #trailer-video {
-        width: 100%;
-        height: 100%;
+            width: 100%;
+            height: 100%;
         }
         .movie-tile {
-        background-color: #eee;
-        margin-bottom: 20px;
-        padding-top: 20px;
+            background-color: #eee;
+            margin-bottom: 20px;
+            padding-top: 20px;
         }
         .movie-tile:hover {
-        background-color: #ffb2b2;
-        cursor: pointer;
+            background-color: #ffb2b2;
+            cursor: pointer;
         }
         .scale-media {
-        padding-bottom: 56.25%;
-        position: relative;
+            padding-bottom: 56.25%;
+            position: relative;
         }
         .scale-media iframe {
-        border: none;
-        height: 100%;
-        position: absolute;
-        width: 100%;
-        left: 0;
-        top: 0;
-        background-color: white;
-        }		
-		.navbar-default{
-		background-image:none;
-		box-shadow:none;
-		-webkit-box-shadow:none;
-		}
-		.navbar-header {
-		float: left;
-		padding: 15px;
-		text-align: center;
-		width: 100%;
-		}
-		.navbar-brand {
-		float:none;
-		}
-		.navbar-default .navbar-brand{
-		color:#f00;
-		}
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+        .navbar-default {
+            background-image: none;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+        .navbar-header {
+            float: left;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+        }
+        .navbar-brand {
+            float: none;
+        }
+        .navbar-default .navbar-brand {
+            color: #f00;
+        }
     </style>
     <script type="text/javascript" charset="utf-8">	// Pause the video when the modal is closed
         $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
